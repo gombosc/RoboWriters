@@ -10,7 +10,7 @@ html {
   background-repeat: no-repeat;
 }
 
-.container{
+#container{
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -41,7 +41,7 @@ button:active{
 }
 
 button:disabled{
-  cursor:default;
+  cursor: default;
   filter: brightness(35%);
 }
 
