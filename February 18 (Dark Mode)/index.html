@@ -9,6 +9,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- DarK Mode Switch -->
+    <div class="theme-switch-wrapper">
+        <span id="toggle-icon">
+            <span class="toggle-text">Light Mode</span>
+            <i class="fas fa-sun"></i>
+        </span>
+        <label class="theme-switch">
+            <input title="asa" type="checkbox">
+            <div class="slider round"></div>
+        </label>
+    </div>
+
     <!-- Navigation -->
     <nav id="nav">
         <a href="#home">HOME</a>
@@ -44,10 +57,29 @@
     <!-- Projects Section -->
     <section id="projects">
         <h1>Buttons</h1>
+        <div class="buttons">
+            <button class="primary">Primary</button>
+            <button class="secondary">Secondary</button>
+            <button class="primary" disabled>Disabled</button>
+            <button class="outline">Outline</button>
+            <button class="secondary outline">Alt Outline</button>
+            <button class="outline" disabled>Disabled</button>
+        </div>
+        <div class="text-box" id="text-box">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis delectus est mollitia ad. Repellendus repellat, nesciunt quas aliquid minima cumque laborum nemo voluptatem, ea, necessitatibus sint quos voluptates cupiditate labore?</p>
+        </div>
     </section>
     <!-- Contact Section -->
     <section id="contact">
         <h1>Contact</h1>
+        <div class="social-icons">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-linkedin"></i>
+            <i class="fab fa-github"></i>
+            <i class="fab fa-stack-overflow"></i>
+        </div>
     </section>
     <!-- Script -->
     <script src="script.js"></script>
