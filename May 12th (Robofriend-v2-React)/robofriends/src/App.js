@@ -1,12 +1,16 @@
-import React, {Component} from "react"
-import './App.css';
+import React from "react";
+import CardList from "./CardList";
+import { robots } from "./robots";
+import Searchbox from "./Searchbox"
 
-class App extends Component() {
-  render(){
-    return (
-      <h1> Starting RoboFriends </h1>
-    );
-  }
+const App = () => {
+    return(
+        <div className="tc">
+            <h1>Monster Writers</h1>
+            <Searchbox />
+            <CardList robots={robots} />
+        </div>
+    )
 }
 
 export default App;
