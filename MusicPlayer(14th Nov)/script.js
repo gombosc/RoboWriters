@@ -8,6 +8,12 @@ const playBtn = document.getElementById("play");
 const nextBtn = document.getElementById("next");
 const prevBtn = document.getElementById("prev");
 
+const progressContainer = document.getElementById("progress-container");
+const progress = document.getElementById("progress");
+
+const currentTimeEl = document.getElementById("current-time");
+const durationEl = document.getElementById("duration");
+
 const tracks = [
     {
         name: 'jacinto-1',
@@ -88,7 +94,55 @@ function prevSong(){
     playMusic();
 }
 
+function updateProgress(e){
+    if(isPlaying){
+        const {currentTime, duration} = e.srcElement
+        // Update progress bar
+        let progressTime = (currentTime / duration) *100;
+        progress.style.width = `${progressTime}%`;
+
+        // Calculate song duration
+        let minutes = Math.floor(duration / 60);
+        let seconds = Math.floor(duration % 60);
+        if(seconds < 10){
+            seconds = `0${seconds}`;
+        }
+        // Update song time for each track
+        if(seconds){
+            durationEl.textContent = `${minutes}:${seconds}`;
+        }
+        
+        // Calculate song current time
+        let currentMinutes = Math.floor(currentTime / 60);
+        let currentSeconds = Math.floor(currentTime % 60);
+        if(currentMinutes < 10){
+            currentMinutes = `0${currentMinutes}`;
+        }
+        if(currentSeconds < 10){
+            currentSeconds = `0${currentSeconds}`;
+        }
+        // Update song time for each track
+        if(currentSeconds){
+            currentTimeEl.textContent = `${currentMinutes}:${currentSeconds}`;
+        }
+        
+    }
+}
+
+function setProgressBar(e){
+    const width = this.clientWidth;
+    let clickX = e.offsetX;
+
+    const {duration} = music;
+    music.currentTime = (clickX / width) *duration;
+    playMusic();
+}
+
 loadSong(tracks[songIndex]);
 prevBtn.addEventListener("click", prevSong);
 nextBtn.addEventListener("click", nextSong);
 
+music.addEventListener("timeupdate", updateProgress);
+
+progressContainer.addEventListener("click", setProgressBar)
+music.addEventListener("ended", nextSong)
