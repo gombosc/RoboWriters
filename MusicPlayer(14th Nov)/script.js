@@ -14,34 +14,62 @@ const progress = document.getElementById("progress");
 const currentTimeEl = document.getElementById("current-time");
 const durationEl = document.getElementById("duration");
 
-const tracks = [
-    {
-        name: 'jacinto-1',
-        songName: "Beauty Land",
-        artistName: "Maneskin",
-    },
+// const tracks = [
+//     {
+//         name: 'jcole',
+//         songName: "Free Remix",
+//         artistName: "J.Cole",
+//     },
 
-    {
-        name: 'jacinto-2',
-        songName: "Snakes",
-        artistName: "Russ",
-    },
+//     {
+//         name: 'mtjoy',
+//         songName: "Silver Lining",
+//         artistName: "Mt. Joy",
+//     },
 
-    {
-        name: 'jacinto-3',
-        songName: "Money Game",
-        artistName: "Ren",
-    },
-    {
-        name: 'jacinto-4',
-        songName: "Lil Dicky",
-        artistName: "Westbrook",
+//     {
+//         name: 'drake',
+//         songName: "Laugh Now Cry Later",
+//         artistName: "Drake",
+//     },
+//     {
+//         name: 'kanye',
+//         songName: "Good Morning",
+//         artistName: "Kanye West",
+//     },
+//     {
+//         name: 'ryofukui',
+//         songName: "Scenery",
+//         artistName: "Ryo Fukui",
+//     },
+//     {
+//         name: 'jcole2',
+//         songName: "Apparently",
+//         artistName: "J.Cole",
+//     }
+// ]
+
+let songKeys;
+let songValues;
+
+async function fetchTracks(){
+    try {
+        const response = await fetch('tracks.json');
+        const data = await response.json();
+        songValues = Object.values(data);
+        songKeys = Object.keys(data);
+        return data;
+    } catch (error){
+        console.error('Error fetching tracks', error);
+        return null;
     }
-]
+}
+
 
 // Function for play / pause
 
 let isPlaying = false;
+
 
 function playMusic(){
     isPlaying = true;
@@ -65,21 +93,26 @@ playBtn.addEventListener("click", () => {
 // Current Song 
 let songIndex = 0;
 
-function loadSong(track){
-    artist.textContent = track.artistName;
-    song.textContent = track.songName;
-    music.src = `music/${track.name}.mp3`;
-    image.src = `img/${track.name}.jpg`;
+async function loadSong(trackNumber){  
+    if(songValues && songValues[trackNumber]) {
+        artist.textContent = songValues[trackNumber].artist;
+        song.textContent = songValues[trackNumber].songName;
+        music.src = `music/${songValues[trackNumber].name}.mp3`;
+        image.src = `img/${songValues[trackNumber].name}.png`;
+    } else {
+        console.error(`Track not found: ${trackNumber}`);
+    }
+    
 }
 
 function nextSong(){
     songIndex++;
 
-    if(songIndex > tracks.length - 1){
+    if(songIndex > songKeys.length - 1){
         songIndex = 0;
     }
 
-    loadSong(tracks[songIndex]);
+    loadSong(songIndex);
     playMusic();
 }
 
@@ -87,10 +120,10 @@ function prevSong(){
     songIndex--;
 
     if(songIndex < 0){
-        songIndex = tracks.length - 1;
+        songIndex = songKeys.length - 1;
     }
 
-    loadSong(tracks[songIndex]);
+    loadSong(songIndex);
     playMusic();
 }
 
@@ -138,11 +171,17 @@ function setProgressBar(e){
     playMusic();
 }
 
-loadSong(tracks[songIndex]);
+
+fetchTracks();
+// Basic Playing Function - wait for the async fetch function to complete then load song, otherwise first one doesn't show up correctlgity
+setTimeout( () => {
+    loadSong(songIndex);
+} , 500);
+
 prevBtn.addEventListener("click", prevSong);
 nextBtn.addEventListener("click", nextSong);
 
+// Progress bar and selecting time
 music.addEventListener("timeupdate", updateProgress);
-
 progressContainer.addEventListener("click", setProgressBar)
 music.addEventListener("ended", nextSong)

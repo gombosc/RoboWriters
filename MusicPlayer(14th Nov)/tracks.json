@@ -1,0 +1,32 @@
+{
+    "song1": {
+        "name": "jcole",
+        "songName": "Free Remix",
+        "artist": "J. Cole"
+    },
+    "song2":{
+        "name": "mtjoy",
+        "songName": "Silver Lining",
+        "artist": "Mt. Joy"
+    },
+    "song3":{
+        "name": "drake",
+        "songName": "Laugh Now Cry Later",  
+        "artist": "Drake"
+    },
+    "song4":{
+        "name": "kanye",
+        "songName": "Good Morning",
+        "artist": "Kanye West"
+    },
+    "song5":{
+        "name": "ryofukui",
+        "songName": "Scenery",
+        "artist": "Ryo Fukui"
+    },
+    "song6":{
+        "name": "jcole2",
+        "songName": "Apparently",
+        "artist": "J. Cole"
+    }
+}
