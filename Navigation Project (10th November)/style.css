@@ -219,7 +219,7 @@ section {
 }
 
 section#home {
-  background-image: url("background.png");
+  background-image: url("background.jpg");
   background-size: cover;
   background-position: center center;
 }
