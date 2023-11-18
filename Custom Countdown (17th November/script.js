@@ -2,7 +2,7 @@ const inputContainer = document.getElementById("input-container")
 const countdownForm = document.getElementById("countdownForm");
 const dateEl = document.getElementById("date-picker");
 const countdownTimer = document.getElementById("countdown");
-const countdownTimerTitle = document.getElementById("countdown-title");
+const countdownTimerTitle = document.getElementsByClassName("countdown-title");
 const countdownButton = document.getElementById("countdown-button");
 const timeElements = document.querySelectorAll("span");
 
@@ -28,18 +28,25 @@ function updateDOM(){
     let distance = dateUserValue - timeNow;
 
     // Calculate countdown elements
-    console.log(`Calculate days: distance / day`)
     const days = Math.floor(distance / day);
-    con
+    
+
     const hours = Math.floor( ( distance % day) / hour);
-    const minutes = Math.floor( ( distance % hours) / minute);
-    const seconds = Math.floor( distance % minutes ) / minutes ;
+    
+    
+    const minutes = Math.floor( ( distance % hour) / minute);
+    
+
+    const seconds = Math.floor( (distance % minute ) / second);
+    
 
     // Populate Countdown Elements
     timeElements[0].textContent = days;
     timeElements[1].textContent = hours;
     timeElements[2].textContent = minutes;
     timeElements[3].textContent = seconds;
+
+    countdownTimerTitle[0].textContent = countdownTitle;
 
     // Turn on / off hidden for containers
     inputContainer.hidden = true;
