@@ -21,6 +21,7 @@ let countdownDate = '';
 let userHour = '';
 let dateUserValue = Date;
 let timerRefresher = '';
+let countdownStorage;
 
 // A millisecond is a unit of time in the International System of Units equal to one thousandth of a second and to 1000 microseconds. 
 // Standard length of time
@@ -29,6 +30,11 @@ const minute = second * 60;
 const hour = minute * 60;
 const day = hour * 24;
 const year = day * 365;
+
+let days;
+let hours; 
+let minutes;
+let seconds;
 
 // Set Date Input Min with Today's Date
 const todayDate = new Date().toISOString().split("T")[0];
@@ -118,6 +124,10 @@ function reset(){
     countdownDate = "";
     userHour = "";
     completeInfo.textContent = "";
+    days ='';
+    hours = '';
+    minutes = '';
+    seconds = '';
     countdownForm.reset();
     localStorage.removeItem("countdownStorage");
 }
