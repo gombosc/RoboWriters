@@ -7,7 +7,6 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  overflow-y: hidden;
   display: flex;
   align-items: flex-start;
   font-family: Lora, serif;
@@ -53,6 +52,14 @@ video {
     align-items: center;
   }
 
+#second-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #countdown-container{
     border-style: solid;
     width: 35%;
@@ -64,7 +71,7 @@ video {
     align-items: center;
   }
 
-  .countdown-button {
+  #countdown-button {
     width: 100px;
     height: 35px;
     border-radius: 20px;
@@ -75,8 +82,18 @@ video {
     cursor: pointer;
   }
   
-  button:hover {
+  #countdown-button:hover {
     background: #00352e;
+  }
+
+  
+  .fa-plus-square-o{
+    margin-top: 0.5em;
+    color: #002822;
+  }
+  .fa-plus-square-o:hover{
+    cursor: pointer;
+    color: #00352e;
   }
 
 .title-header{

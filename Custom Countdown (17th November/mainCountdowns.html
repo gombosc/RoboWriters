@@ -6,6 +6,8 @@
     <title>Custom Countdown</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="countdowns.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
     <video class="video-background" autoplay loop muted>
@@ -16,23 +18,19 @@
 
     <!-- Container -->
     <div id="container">
-        
         <h1 class="title-header">Custom Countdowns</h1>
+        <div id="second-container">
 
-        <div id="countdown-container">
-            <h1 id="countdown-title" hidden></h1>
-            <button class="countdown-button"
-            onclick="window.location='index.html'" value="click here" />Create
+            <div id="countdown-container">
+                <h1 id="countdown-title" hidden></h1>
+                <button id="countdown-button"
+                onclick="window.location='index.html'" value="click here" />Create
+                
+            </div>
         </div>
-
-        <!-- Display Title and Container -->
-        <div class="countdown-update" id="countdown-update" hidden>
-            
-            <button id="countdown-button">Reset</button>
-        </div>
-
-        
+        <i onclick="onPlusSign()" class="fa fa-plus-square-o fa-3x" ></i>    
     </div>
+
      <!-- Script -->
      <script src="script2.js"></script>
     </body>
