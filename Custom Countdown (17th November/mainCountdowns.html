@@ -17,19 +17,26 @@
     <div class="video-overlay"></div>
 
     <!-- Container -->
-    <div id="container">
-        <h1 class="title-header">Custom Countdowns</h1>
-        <div id="second-container">
+        <div id="container">
+            <h1 class="title-header">Custom Countdowns</h1>
 
-            <div id="countdown-container">
-                <h1 id="countdown-title" hidden></h1>
-                <button id="countdown-button"
-                onclick="window.location='index.html'" value="click here" />Create
-                
+            <!-- Initial Countdown, empty on load -->
+            <div id="second-container">
+
+                <div id="countdown-container">
+                    <h1 id="countdown-title" hidden></h1>
+                    <div id="button-container">
+                        <button id="countdown-button"
+                        onclick="window.location='index.html'" value="click here" />Create
+                        <button id="remove-button" onclick="remove(this.parentElement.parentElement)" hidden>Remove</button>
+                    </div>
+                </div>
+            </div>
+            <div id="plusIcon" hidden>
+                <i id="plusSign" onclick="onPlusSign()" class="fa fa-plus-square-o fa-5x" aria-="true"></i> 
+                <button id="remove-button" onclick="removeSavedDivs()">Remove All</button>
             </div>
         </div>
-        <i onclick="onPlusSign()" class="fa fa-plus-square-o fa-3x" ></i>    
-    </div>
 
      <!-- Script -->
      <script src="script2.js"></script>

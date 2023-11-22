@@ -10,6 +10,7 @@ body {
   display: flex;
   align-items: flex-start;
   font-family: Lora, serif;
+ 
 }
 
 
@@ -36,17 +37,18 @@ video {
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.17);
 }
 
 #container {
-    width: 90%;
-    height: 100vh;
+    width: 80vw;
+    min-height: 100vh;
+    max-height: auto;
     color: black;
     margin: 0 auto;
     border-radius: 30px;
     z-index: 2;
-    background-color: rgba(231, 231, 231, 0.245);
+    background-color: rgba(231, 231, 231, 0.177);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,19 +63,31 @@ video {
 }
 
 #countdown-container{
-    border-style: solid;
-    width: 35%;
-    height: 20%;
-    margin-top: 3%;
+    border-style: inset groove;
+    border-color: #002822a7;
+    box-shadow: -50px 30px 15px rgba(0, 51, 44, 0.8);
+    border-radius: 60px;
+    width: 35vw;
+    height: 19vh;
+    margin-top: 25px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
   }
 
-  #countdown-button {
-    width: 100px;
-    height: 35px;
+  #button-container{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  #countdown-button, #remove-button {
+    width: 150px;
+    height: 45px;
     border-radius: 20px;
     border: none;
     text-transform: uppercase;
@@ -81,11 +95,19 @@ video {
     color: white;
     cursor: pointer;
   }
-  
-  #countdown-button:hover {
-    background: #00352e;
+
+  #countdown-button:hover, #remove-button:hover {
+    background: rgb(0, 51, 44);
   }
 
+  /* Icon and remove all button */
+  #plusIcon{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   
   .fa-plus-square-o{
     margin-top: 0.5em;
@@ -99,6 +121,12 @@ video {
 .title-header{
     text-align: center;
     font-size: 50px;
+    color: #002822fc;
+    letter-spacing: 8px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-decoration: underline;
+    margin-top: 0.2em;
+    margin-bottom: .5em;
 }
 
   h1 {
