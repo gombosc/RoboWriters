@@ -23,11 +23,11 @@
             <!-- Initial Countdown, empty on load -->
             <div id="second-container">
 
-                <div id="countdown-container">
+                <div id="countdown-container" class="0">
                     <h1 id="countdown-title" hidden></h1>
                     <div id="button-container">
                         <button id="countdown-button"
-                        onclick="window.location='index.html'" value="click here" />Create
+                        onclick="removeStorage()" value="click here"/>Create
                         <button id="remove-button" onclick="remove(this.parentElement.parentElement)" hidden>Remove</button>
                     </div>
                 </div>
@@ -40,5 +40,6 @@
 
      <!-- Script -->
      <script src="script2.js"></script>
+     <script src="script.js"></script>
     </body>
     </html>

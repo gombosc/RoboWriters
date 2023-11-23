@@ -23,6 +23,10 @@ let dateUserValue = Date;
 let timerRefresher = '';
 let countdownStorage;
 
+// Create unique key for each new countdown created
+let countdownNr = 0;
+console.log("First value: ", countdownNr);
+
 // A millisecond is a unit of time in the International System of Units equal to one thousandth of a second and to 1000 microseconds. 
 // Standard length of time
 const second = 1000;
@@ -39,15 +43,6 @@ let seconds;
 // Set Date Input Min with Today's Date
 const todayDate = new Date().toISOString().split("T")[0];
 dateEl.setAttribute('min', todayDate);
-
-// Set min hour to be current user hour, refresh every 30 seconds
-// var actualTimeInterval = setInterval( () =>{
-//     const currentHour = new Date().getHours()
-//     currentMinutes = new Date().getMinutes();
-//     const currentTime = `${currentHour}:${currentMinutes}`;
-//     hourInput.setAttribute('min', currentTime);
-// }, 3000);
-
 
 // Populate Countdown elements
 function updateDOM(){
@@ -90,14 +85,16 @@ function updateCountdown(e){
     userHour = e.srcElement[2].value;
     e.preventDefault();
 
+    localStorage.setItem("countdownNr", JSON.stringify(countdownNr));
+
     countdownStorage = {
+        key: countdownNr,
         title: countdownTitle,
         date: countdownDate,
         hour: userHour
     }
 
-    localStorage.setItem("countdownStorage", JSON.stringify(countdownStorage));
-
+    localStorage.setItem(`countdownStorage${countdownNr}`, JSON.stringify(countdownStorage));
 
     // Get number version of current Date, updateDOM
     dateUserValue = new Date(`${countdownDate}T${userHour}`).getTime();
@@ -132,9 +129,12 @@ function reset(){
     localStorage.removeItem("countdownStorage");
 }
 
+
 function restoreLocalItems(){
-    if(localStorage.getItem("countdownStorage")){
-        countdownStorage = JSON.parse(localStorage.getItem('countdownStorage'));
+    if(localStorage.getItem(`countdownStorage${countdownNr}`)){
+        // Restore key from local Storage
+        countdownKey = JSON.parse(localStorage.getItem('countdownNr'));
+        countdownStorage = JSON.parse(localStorage.getItem(`countdownStorage${countdownNr}`));
         countdownTitle = countdownStorage.title;
         countdownDate = countdownStorage.date;
         userHour = countdownStorage.hour;
@@ -151,4 +151,11 @@ countdownButton.addEventListener("click", reset);
 completeButton.addEventListener("click", reset);
 
 // On Load, restore local storage items
-restoreLocalItems();
+window.onload = (event) => {
+    restoreLocalItems();
+}
+
+function removeStorage(){
+    localStorage.clear();
+}
+

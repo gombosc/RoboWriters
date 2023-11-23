@@ -7,9 +7,26 @@ let countdownButton = document.getElementById("countdown-button");
 let removeButton = document.getElementById("remove-button");
 let divPlusIcon = document.getElementById("plusIcon");
 
+let countdownKeyMain = 0;
+
+console.log(countdownContainer.classList[0]);
+
 let countdownTitle;
 // Set div names numerical based on created order
 let divNr = 0;
+
+function mainButtonClick(){
+    // Move to countdown page
+    window.location='index.html';
+
+    // Check if key already exists in local storage
+    if(localStorage.getItem(countdownKey)){
+        buttonKey = JSON.parse(localStorage.getItem(countdownKey));
+
+    }
+
+    // Create custom key to save user countdown data to local storage, identify and retrieve it
+}
 
 function restrieveLocalItems(){
     if(localStorage.getItem("countdownStorage")){
@@ -73,10 +90,7 @@ function onPlusSign(){
         // save div to local storage 
         saveDivToLocalStorage(newCountdownDiv);
         divNr++;
-        localStorage.setItem('divNr', JSON.stringify(divNr));
-        
-        
-        
+        localStorage.setItem('divNr', JSON.stringify(divNr));        
        
 }
 
@@ -107,6 +121,14 @@ window.onload = (event) => {
     if(localStorage.getItem('divNr')){
         divNr = JSON.parse(localStorage.getItem('divNr'));
     }
+    
+    if(localStorage.getItem('countdownNr')){
+        countdownKeyMain = JSON.parse(localStorage.getItem('countdownKey'))
+        console.log("Key exists!", countdownKeyMain);
+    }else{
+        console.log("Key doesn't exist");
+    }
+
     restrieveLocalItems();
     addSavedDivs();
   };
