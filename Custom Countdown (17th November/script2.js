@@ -8,32 +8,26 @@ let removeButton = document.getElementById("remove-button");
 let divPlusIcon = document.getElementById("plusIcon");
 
 let countdownKeyMain = 0;
-
-console.log(countdownContainer.classList[0]);
+let divKey;
+let countdownItems;
 
 let countdownTitle;
 // Set div names numerical based on created order
-let divNr = 0;
+let divNr = 1;
 
-function mainButtonClick(){
-    // Move to countdown page
-    window.location='index.html';
-
-    // Check if key already exists in local storage
-    if(localStorage.getItem(countdownKey)){
-        buttonKey = JSON.parse(localStorage.getItem(countdownKey));
-
-    }
-
-    // Create custom key to save user countdown data to local storage, identify and retrieve it
+function onShowButton(e){
+    let element = e.classList[0];
+    console.log(element)
+    localStorage.setItem("mainPageKey", JSON.stringify(element));
+    window.location.href = "index.html"
 }
 
 function restrieveLocalItems(){
-    if(localStorage.getItem("countdownStorage")){
+    if(localStorage.getItem(`countdownStorage0`)){
         divPlusIcon.hidden = false;
         removeButton.hidden = false;
         countdownButton.textContent = "Show";
-        countdownStorage = JSON.parse(localStorage.getItem('countdownStorage'));
+        countdownStorage = JSON.parse(localStorage.getItem('countdownStorage0'));
         titleElement.hidden = false;
         countdownTitle = countdownStorage.title;
         titleElement.textContent = countdownTitle;
@@ -43,7 +37,7 @@ function restrieveLocalItems(){
 }
 
 function addSavedDivs(){
-    for(i=0; i<=10; i++){
+    for(i=1; i<=10; i++){
         if(localStorage.getItem(`countdown${i}`)){
             // Check for each saved countdown div and add it to second container
             let countdown = `countdown${i}`;
@@ -64,7 +58,7 @@ function onPlusSign(){
         // Add the title to container 
         let newCountdownTitle = document.createElement("h1");
         newCountdownTitle.id = 'countdown-title';
-        newCountdownTitle.textContent = "Test";
+        newCountdownTitle.textContent = "Test"
         newCountdownDiv.appendChild(newCountdownTitle);
 
         // Add button container
@@ -74,7 +68,8 @@ function onPlusSign(){
         // Add Show Button
         let newButton = document.createElement('button');
         newButton.id = "countdown-button"
-        newButton.textContent = "Show";
+        newButton.textContent = "Create";
+        newButton.setAttribute("onclick", "onShowButton(this.parentElement.parentElement)");
         buttonContainer.appendChild(newButton);
 
         // Add remove button
@@ -118,6 +113,7 @@ function remove(e){
 
 // onLoad retrieve user countdown
 window.onload = (event) => {
+    // Check for divNr in local storage
     if(localStorage.getItem('divNr')){
         divNr = JSON.parse(localStorage.getItem('divNr'));
     }

@@ -22,10 +22,10 @@ let userHour = '';
 let dateUserValue = Date;
 let timerRefresher = '';
 let countdownStorage;
-
+let mainPageKey;
 // Create unique key for each new countdown created
 let countdownNr = 0;
-console.log("First value: ", countdownNr);
+
 
 // A millisecond is a unit of time in the International System of Units equal to one thousandth of a second and to 1000 microseconds. 
 // Standard length of time
@@ -85,17 +85,23 @@ function updateCountdown(e){
     userHour = e.srcElement[2].value;
     e.preventDefault();
 
-    localStorage.setItem("countdownNr", JSON.stringify(countdownNr));
-
     countdownStorage = {
-        key: countdownNr,
         title: countdownTitle,
         date: countdownDate,
         hour: userHour
     }
 
-    localStorage.setItem(`countdownStorage${countdownNr}`, JSON.stringify(countdownStorage));
-
+    if(!localStorage.getItem("countdownNr")){
+        localStorage.setItem(`countdownStorage${countdownNr}`, JSON.stringify(countdownStorage));
+        countdownNr++;
+        localStorage.setItem("countdownNr", JSON.stringify(countdownNr));
+    }else {
+        countdownNr = JSON.parse(localStorage.getItem("countdownNr", (countdownNr)));
+        localStorage.setItem(`countdownStorage${countdownNr}`, JSON.stringify(countdownStorage));
+        countdownNr++;
+        localStorage.setItem("countdownNr", JSON.stringify(countdownNr));
+    }
+    
     // Get number version of current Date, updateDOM
     dateUserValue = new Date(`${countdownDate}T${userHour}`).getTime();
     // getTime() returns the number of milliseconds since January 1, 1970 00:00:00.
@@ -126,23 +132,24 @@ function reset(){
     minutes = '';
     seconds = '';
     countdownForm.reset();
-    localStorage.removeItem("countdownStorage");
+    localStorage.removeItem(`countdownStorage${mainPageKey}`);
+    localStorage.removeItem(`mainPageKey`);
+
 }
 
 
 function restoreLocalItems(){
-    if(localStorage.getItem(`countdownStorage${countdownNr}`)){
-        // Restore key from local Storage
-        countdownKey = JSON.parse(localStorage.getItem('countdownNr'));
-        countdownStorage = JSON.parse(localStorage.getItem(`countdownStorage${countdownNr}`));
+        // Retrieve countdown data
+        countdownStorage = JSON.parse(localStorage.getItem(`countdownStorage${mainPageKey}`));
+        // Set countdown items to storage value
         countdownTitle = countdownStorage.title;
         countdownDate = countdownStorage.date;
         userHour = countdownStorage.hour;
         dateUserValue = new Date(`${countdownDate}T${userHour}`).getTime();
+        // Hide Containers
         inputContainer.hidden = true;
         countdownTimer.hidden = false;
         updateDOM();
-    }
 }
 
 // Event Listeners
@@ -151,8 +158,20 @@ countdownButton.addEventListener("click", reset);
 completeButton.addEventListener("click", reset);
 
 // On Load, restore local storage items
-window.onload = (event) => {
-    restoreLocalItems();
+window.onload = () => {
+    mainPageKey = JSON.parse(localStorage.getItem("mainPageKey"));
+
+    if(localStorage.getItem('countdownNr')){
+        countdownNr = JSON.parse(localStorage.getItem('countdownNr'));  
+    };
+    
+    if(localStorage.getItem(`countdownStorage${mainPageKey}`)){
+        alert("RESTORING ITEMS...");
+        restoreLocalItems();
+    }else{
+        alert("CREATING NEW COUNTDOWN...");
+
+    }
 }
 
 function removeStorage(){
