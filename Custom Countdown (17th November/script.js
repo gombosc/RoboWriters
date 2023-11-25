@@ -58,7 +58,14 @@ function updateDOM(){
         const hours = Math.floor( ( distance % day) / hour);
         const minutes = Math.floor( ( distance % hour) / minute);
         const seconds = Math.floor( (distance % minute ) / second);
-        
+
+        let timeStorage = {
+            days: days,
+            hours: hours
+        }
+
+        localStorage.setItem(`timeStorage${countdownNr-1}`, JSON.stringify(timeStorage));
+
         if (distance < 0){
             completeContainer.hidden = false;
             completeInfo.textContent = `${countdownTitle} finished on ${countdownDate}`;
@@ -133,7 +140,10 @@ function reset(){
     seconds = '';
     countdownForm.reset();
     localStorage.removeItem(`countdownStorage${mainPageKey}`);
+    localStorage.removeItem(`timeStorage${divClassNr}`);
     localStorage.removeItem(`mainPageKey`);
+    countdownNr--;
+    localStorage.setItem("countdownNr", JSON.stringify(countdownNr));
 
 }
 
@@ -166,11 +176,7 @@ window.onload = () => {
     };
     
     if(localStorage.getItem(`countdownStorage${mainPageKey}`)){
-        alert("RESTORING ITEMS...");
         restoreLocalItems();
-    }else{
-        alert("CREATING NEW COUNTDOWN...");
-
     }
 }
 

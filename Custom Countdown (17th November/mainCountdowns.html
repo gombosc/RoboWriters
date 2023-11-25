@@ -23,18 +23,10 @@
             <!-- Initial Countdown, empty on load -->
             <div id="second-container">
 
-                <div id="countdown-container" class="0">
-                    <h1 id="countdown-title" hidden></h1>
-                    <div id="button-container">
-                        <button id="countdown-button"
-                        onclick="onShowButton(this.parentElement.parentElement)" value="click here"/>Create
-                        <button id="remove-button" onclick="remove(this.parentElement.parentElement)" hidden>Remove</button>
-                    </div>
-                </div>
             </div>
-            <div id="plusIcon" hidden>
-                <i id="plusSign" onclick="onPlusSign()" class="fa fa-plus-square-o fa-5x" aria-="true"></i> 
-                <button id="remove-button" onclick="removeSavedDivs()">Remove All</button>
+            <div id="plusIcon">
+                <i id="plusSign" onclick="onPlusSign()" class="fa fa-plus-square-o fa-5x"></i> 
+                <button id="remove-button" onclick="removeSavedDivs()">Reset</button>
             </div>
         </div>
 

@@ -13,7 +13,6 @@ body {
  
 }
 
-
 /* Video Background */
 .video-background {
   position: fixed;
@@ -68,12 +67,13 @@ video {
     box-shadow: -50px 30px 15px rgba(0, 51, 44, 0.8);
     border-radius: 60px;
     width: 35vw;
-    height: 19vh;
+    height: 25vh;
     margin-top: 25px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    display: flex;
   }
 
   #button-container{
@@ -126,7 +126,6 @@ video {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-decoration: underline;
     margin-top: 0.2em;
-    margin-bottom: .5em;
 }
 
   h1 {
@@ -134,23 +133,23 @@ video {
     text-align: center;
     margin-top: 0;
     margin-bottom: 10px;
+    color: #002822;
+  }
+
+  ul{
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    list-style-type: none;
   }
 
   li {
     display: inline-block;
-    font-size: 10px;
     list-style-type: none;
-    padding: 3px;
     text-transform: uppercase;
+    font-size: 1.5em;
+    color: #002822;
   }
-  
-  li span {
-    display: block;
-    font-size: 20px;
-    text-align: center;
-  }
-  
-  
+
 
   /* Media Query: Large Smartphone (Vertical) */
 @media screen and (max-width: 600px) {
