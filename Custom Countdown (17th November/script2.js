@@ -17,7 +17,7 @@ let divNr = 0;
 function onShowButton(e){
     let element = e.classList[0];
     localStorage.setItem("mainPageKey", JSON.stringify(element));
-    window.location.href = "index.html"
+    window.location.href = "countdown.html"
 }
 
 function updateDivElements(){
@@ -70,7 +70,7 @@ function addSavedDivs(){
 }
 
 function onPlusSign(){
-    // window.location.href = 'index.html'
+        window.location.href = 'countdown.html'
         let newCountdownDiv = document.createElement("div");
         newCountdownDiv.id = 'countdown-container';
         newCountdownDiv.classList = `${divNr}`;
@@ -146,6 +146,15 @@ function remove(e){
     }
 
     localStorage.removeItem(`countdown${divClassNr}`);
+
+    let countdownNr = JSON.parse(localStorage.getItem("countdownNr"))
+    if(countdownNr != 0){
+        countdownNr--;
+        localStorage.setItem('countdownNr', JSON.stringify(countdownNr));
+    }
+   
+    
+
     if(localStorage.getItem(`countdownStorage${divClassNr}`)){
         localStorage.removeItem(`countdownStorage${divClassNr}`);
         localStorage.removeItem(`timeStorage${divClassNr}`);

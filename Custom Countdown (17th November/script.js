@@ -63,8 +63,10 @@ function updateDOM(){
             days: days,
             hours: hours
         }
-
-        localStorage.setItem(`timeStorage${countdownNr-1}`, JSON.stringify(timeStorage));
+        if(countdownNr >= 0){
+            localStorage.setItem(`timeStorage${countdownNr-1}`, JSON.stringify(timeStorage));
+        }
+        
 
         if (distance < 0){
             completeContainer.hidden = false;
@@ -140,8 +142,10 @@ function reset(){
     seconds = '';
     countdownForm.reset();
     localStorage.removeItem(`countdownStorage${mainPageKey}`);
-    localStorage.removeItem(`timeStorage${divClassNr}`);
+    localStorage.removeItem(`timeStorage${mainPageKey}`);
     localStorage.removeItem(`mainPageKey`);
+
+    countdownNr = JSON.parse(localStorage.getItem("countdownNr"))
     countdownNr--;
     localStorage.setItem("countdownNr", JSON.stringify(countdownNr));
 

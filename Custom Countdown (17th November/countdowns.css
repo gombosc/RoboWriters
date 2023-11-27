@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Kaushan+Script&family=Lora&family=Oswald&family=Roboto:wght@100&display=swap');
 
+/* Video by <a href="https://pixabay.com/users/felixmittermeier-4397258/?utm_source=link-attribution&utm_medium=referral&utm_campaign=video&utm_content=91545">PayPal.me/FelixMittermeier</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=video&utm_content=91545">Pixabay</a> */
+
 html {
   box-sizing: border-box;
 }
@@ -30,24 +32,25 @@ video {
   transform: translate(-50%, -50%);
 }
 
-.video-overlay {
+/* .video-overlay {
   position: fixed;
   left: 0;
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.17);
-}
+  background-color: rgba(0, 0, 0, 0);
+} */
 
 #container {
-    width: 80vw;
-    min-height: 100vh;
+    width: 60vw;
+    min-height: 90vh;
     max-height: auto;
     color: black;
     margin: 0 auto;
-    border-radius: 30px;
+    margin-top: 2em;
+    border-radius: 50px;
     z-index: 2;
-    background-color: rgba(231, 231, 231, 0.177);
+    background-color: rgba(253, 253, 253, 0.549);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -63,8 +66,8 @@ video {
 
 #countdown-container{
     border-style: inset groove;
-    border-color: #002822a7;
-    box-shadow: -50px 30px 15px rgba(0, 51, 44, 0.8);
+    border-color: #00374fa7;
+    box-shadow: -50px 30px 15px rgba(0, 61, 80, 0.799);
     border-radius: 60px;
     width: 35vw;
     height: 25vh;
@@ -73,7 +76,7 @@ video {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    display: flex;
+    display: none;
   }
 
   #button-container{
@@ -91,13 +94,14 @@ video {
     border-radius: 20px;
     border: none;
     text-transform: uppercase;
-    background: #002822;
+    background: #033b4a;
     color: white;
     cursor: pointer;
   }
 
   #countdown-button:hover, #remove-button:hover {
-    background: rgb(0, 51, 44);
+    background:  #045164;
+    transform: scale(1.1);
   }
 
   /* Icon and remove all button */
@@ -111,29 +115,32 @@ video {
   
   .fa-plus-square-o{
     margin-top: 0.5em;
-    color: #002822;
+    color:  #033b4a; 
+    
   }
   .fa-plus-square-o:hover{
     cursor: pointer;
-    color: #00352e;
+    color:  #045164;
+    transform: scale(1.25);
   }
 
 .title-header{
     text-align: center;
     font-size: 50px;
-    color: #002822fc;
-    letter-spacing: 8px;
+    color: rgb(2, 39, 69);
+    letter-spacing: 10px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-decoration: underline;
-    margin-top: 0.2em;
+    margin-top: 0.5em;
+    margin-bottom: 0.25em;
 }
 
   h1 {
     font-size: 35px;
     text-align: center;
     margin-top: 0;
-    margin-bottom: 10px;
-    color: #002822;
+    margin-bottom: -15px;
+    color: #000000;
   }
 
   ul{
@@ -145,11 +152,13 @@ video {
   li {
     display: inline-block;
     list-style-type: none;
-    text-transform: uppercase;
-    font-size: 1.5em;
-    color: #002822;
+    font-size: 1.7em;
+    color: #191919;
   }
 
+  li:first-child{
+    padding-right: 0.4em;;
+  }
 
   /* Media Query: Large Smartphone (Vertical) */
 @media screen and (max-width: 600px) {

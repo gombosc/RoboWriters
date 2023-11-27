@@ -1,0 +1,64 @@
+<!-- Create option for multiple countdowns in different pages -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Countdown</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <video class="video-background" autoplay loop muted>
+        <source src="background/mountains_-_91545 (720p).mp4">
+    </video>
+
+    <div class="video-overlay"></div>
+
+    <button class="backButton" onclick="window.location='index.html'" value="press">Main Page</button>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Input Container -->
+        <div class="input-container" id="input-container">
+            <h1 class="formTitle">Custom Countdown</h1>
+            <form class="form" id="countdownForm">
+                <label for="title">Name</label>
+                <input type="text" id="title" placeholder="What are you counting down to?">
+
+                <label for="date">Date</label>
+                <input type="date" id="date-picker" 
+                    placeholder="Select Date">
+                
+                <label for="hour">Hour</label>
+                <input type="time" id="hour-picker" 
+                    placeholder="Select Time">
+
+                <button type="submit" id="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Countdows -->
+        <div class="countdown" id="countdown" hidden>
+            <h1 class="countdown-title"></h1>
+            <ul>
+                <li><span></span>Days</li>
+                <li><span></span>Hours</li>
+                <li><span></span>Minutes</li>
+                <li><span></span>Seconds</li>
+            </ul>
+            <button id="countdown-button">Reset</button>
+        </div>
+
+        <!-- Complete -->
+        <div class="complete" id="complete" hidden>
+            <h1 class="complete-title">Countdown Complete</h1>
+            <h1  id="complete-info"></h1>
+            <button id="complete-button">New</button>
+        </div>
+    </div>
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>

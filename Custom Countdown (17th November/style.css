@@ -115,14 +115,14 @@ button {
   margin-top: 15px;
   border: none;
   text-transform: uppercase;
-  background: #006959;
+  background:#033b4a; 
   color: white;
   cursor: pointer;
   outline: none;
 }
 
 button:hover {
-  background: #005c4f;
+  background: #045164;
 }
 
 
